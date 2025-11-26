@@ -1,12 +1,12 @@
 set $mod Mod4
 
-# Prevent Sway from exiting immediately
-exec_always sleep infinity &
+# Keep sway alive even if shell fails
+exec sleep infinity &
 
-# Launch J’SOS after swipe init
-exec_always sleep 1 && dbus-run-session -- epiphany /usr/local/share/jsos-shell/index.html
+# Delay browser launch so Wayland + DBus are ready
+exec sleep 1 && dbus-run-session -- /usr/lib/aarch64-linux-gnu/webkitgtk-6.0/MiniBrowser /usr/local/share/jsos-shell/index.html
 
-# Optional: terminal
+# Terminal
 bindsym $mod+Return exec foot
 
 # Exit sway

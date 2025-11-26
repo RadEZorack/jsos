@@ -40,4 +40,27 @@ h1 {
   font-size: 48px;
   margin: 0;
 }
-  
+
+.app-icon {
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  margin: 40px auto;
+  transition: transform 0.15s ease;
+}
+
+.app-icon:hover {
+  transform: scale(1.08);
+}
+
+.app-img {
+  width: 96px;
+  height: 96px;
+}
+
+.app-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  color: white;
+}
