@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
-
 set -e
 
-echo "Installing J'SOS..."
+echo "🚀 Installing J'SOS..."
 
+# Install directories
 sudo mkdir -p /usr/local/share/jsos-shell
 sudo mkdir -p /usr/local/share/jsos-wm
 
-sudo cp -r ../jsos-shell/* /usr/local/share/jsos-shell/
-sudo cp ../jsos-wm/jsos-session /usr/local/bin/jsos-session
-sudo cp ../jsos-wm/jsos.desktop /usr/share/wayland-sessions/
+# Copy shell
+sudo cp -r "$(dirname "$0")"/../jsos-shell/* /usr/local/share/jsos-shell/
 
+# Copy sway config
+sudo cp "$(dirname "$0")"/../jsos-wm/sway-config /usr/local/share/jsos-wm/sway-config
+
+# Copy launcher script
+sudo cp "$(dirname "$0")"/../jsos-wm/jsos-session /usr/local/bin/jsos-session
 sudo chmod +x /usr/local/bin/jsos-session
 
-echo "Done!"
-echo "Launch J’SOS with:  jsos-session"
+# Copy session entry
+sudo cp "$(dirname "$0")"/../jsos-wm/jsos.desktop /usr/share/wayland-sessions/jsos.desktop
+
+echo "J'SOS installed!"
+echo "Select J'SOS from the login screen to begin."

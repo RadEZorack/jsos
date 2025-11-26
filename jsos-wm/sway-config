@@ -1,0 +1,13 @@
+set $mod Mod4
+
+# Prevent Sway from exiting immediately
+exec_always sleep infinity &
+
+# Launch J’SOS after swipe init
+exec_always sleep 1 && dbus-run-session -- epiphany /usr/local/share/jsos-shell/index.html
+
+# Optional: terminal
+bindsym $mod+Return exec foot
+
+# Exit sway
+bindsym $mod+Shift+e exec "swaymsg exit"

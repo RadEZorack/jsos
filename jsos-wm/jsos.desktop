@@ -1,6 +1,6 @@
 [Desktop Entry]
+Name=J'SOS Desktop
+Comment=JavaScript Operating Shell
+Exec=/usr/local/bin/jsos-session
+TryExec=/usr/local/bin/jsos-session
 Type=Application
-Name=J'SOS Desktop Session
-Exec=jsos-session
-TryExec=jsos-session
-DesktopNames=JSOS
