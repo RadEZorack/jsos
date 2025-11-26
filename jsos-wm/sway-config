@@ -3,8 +3,13 @@ set $mod Mod4
 # Keep sway alive even if shell fails
 exec sleep infinity &
 
+exec_always node /usr/local/bin/server.mjs &
 exec_always node /usr/local/bin/jsos-launcher.mjs &
-exec_always /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser /usr/local/share/jsos-shell/index.html
+exec_always WEBKIT_DISABLE_SANDBOX=1 \
+    WEBKIT_INSPECTOR_SERVER=127.0.0.1:9223 \
+    MESA_GL_VERSION_OVERRIDE=3.0 \
+    /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
+    http://127.0.0.1:7777
 
 # Terminal
 bindsym $mod+Return exec foot

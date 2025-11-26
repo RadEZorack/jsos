@@ -21,6 +21,9 @@ sudo chmod +x /usr/local/bin/jsos-session
 sudo cp "$(dirname "$0")"/../jsos-wm/jsos-launcher.mjs /usr/local/bin/jsos-launcher.mjs
 sudo chmod +x /usr/local/bin/jsos-launcher.mjs
 
+sudo cp "$(dirname "$0")"/../jsos-wm/server.mjs /usr/local/bin/server.mjs
+sudo chmod +x /usr/local/bin/server.mjs
+
 # Copy session entry
 sudo cp "$(dirname "$0")"/../jsos-wm/jsos.desktop /usr/share/wayland-sessions/jsos.desktop
 
