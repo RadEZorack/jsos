@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=J'SOS Desktop Session
+Exec=jsos-session
+TryExec=jsos-session
+DesktopNames=JSOS

@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background: #111;
+  font-family: Arial, sans-serif;
+  color: #0f0;
+}
+
+#topbar {
+  background: rgba(0, 255, 0, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  color: #0f0;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1;
+}
+
+#desktop {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#welcome {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 0;
+}
+  

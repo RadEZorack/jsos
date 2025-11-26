@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# J’SOS Session Launcher
+
+# Kill any existing instances
+pkill sway || true
+
+# Launch sway and the J’SOS desktop
+sway --config /usr/local/share/jsos-wm/sway-config
