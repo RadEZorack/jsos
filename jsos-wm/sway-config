@@ -1,74 +1,17 @@
-### -------------------------------
-### J’SOS — Sway Configuration
-### -------------------------------
-
 set $mod Mod4
-
-##############################
-# Environment Fixes
-##############################
-
-# Guarantee Wayland runtime paths exist
-exec_always mkdir -p /run/user/$UID
-
-# Export DISPLAY and runtime vars for all child processes
-exec_always export XDG_RUNTIME_DIR=/run/user/$UID
-exec_always export WAYLAND_DISPLAY=wayland-0
-
-##############################
-# Prevent Sway from quitting
-##############################
-# (Keeps the compositor alive if MiniBrowser crashes)
+# Keep sway alive even if shell fails
 exec_always sleep infinity &
-
-##############################
-# Start J’Core Native Launcher
-##############################
-# (Rust binary; safe to run once)
-exec_always /usr/local/bin/jsos-launcher
-
-##############################
-# Start JSOS Shell (MiniBrowser)
-##############################
-# (Delay ensures Sway + DBus + Wayland are fully online)
-exec_always bash -c "
-    sleep 0.6 && \
-    WEBKIT_DISABLE_SANDBOX=1 \
+# Start J’Core native Rust launcher
+exec_always /usr/local/bin/jsos-launcher &
+# Start MiniBrowser as the JSOS shell
+exec_always WEBKIT_DISABLE_SANDBOX=1 \
     WEBKIT_INSPECTOR_SERVER=127.0.0.1:9223 \
     MESA_GL_VERSION_OVERRIDE=3.0 \
     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
-        --enable-developer-extras \
-        /usr/local/share/jsos-shell/index.html
-"
-
-##############################
-# Make MiniBrowser fullscreen
-##############################
-for_window [app_id="MiniBrowser"] fullscreen enable
-
-##############################
-# Keybinds
-##############################
-
+    /usr/local/share/jsos-shell/index.html
+    
 # Terminal
 bindsym $mod+Return exec foot
 
-# Exit J’SOS session
+# Exit sway
 bindsym $mod+Shift+e exec "swaymsg exit"
-
-##############################
-# Optional polish (safe defaults)
-##############################
-
-# No window borders
-default_border none
-
-# Disable window titlebars
-default_titlebar_border none
-
-# Focus follows mouse OFF (more stable on touch/tablet)
-focus_follows_mouse no
-
-# Single workspace (simple OS UX)
-workspace 1 output *
-

@@ -3,6 +3,10 @@ set -e
 
 echo "🚀 Installing J'SOS (Rust Edition)..."
 
+echo "🔍 Stopping any running J’SOS processes..."
+sudo pkill -f jsos-launcher 2>/dev/null || true
+sudo pkill -f jsos-session 2>/dev/null || true
+
 ROOT="$(dirname "$0")/.."
 
 # ---------------------------------------------------------
