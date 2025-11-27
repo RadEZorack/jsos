@@ -1,0 +1,104 @@
+###############################################
+### J’SOS – Universal Ignore File
+###############################################
+
+########## Core build artifacts ##########
+# Rust
+target/
+*.rs.bk
+
+# Node (old launcher remnants)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Bun / Deno
+bun.lockb
+deno.lock
+
+########## Compiled Shell Assets ##########
+# Anything generated during build
+jsos-shell/dist/
+jsos-shell/.cache/
+
+########## IDE / Editor / Dev Environment ##########
+# VSCode / VSCodium
+.vscode/
+.vscode-oss/
+.codium/
+*.code-workspace
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains (if ever used)
+.idea/
+
+# Cursor (future placeholder)
+.cursor/
+
+########## OS / Parallels / Desktop sync ##########
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnail files
+._*
+
+# Linux / Ubuntu caches
+.cache/
+.local/share/recently-used.xbel
+.local/state/
+logs/
+
+# Parallels shared folder metadata
+/media/psf/**/.DS_Store
+/media/psf/**/.TemporaryItems/
+
+########## Installers / System Files ##########
+# Installed system locations (never commit)
+usr/local/share/jsos-shell/
+usr/local/share/jsos-wm/
+usr/local/bin/jsos-session
+usr/local/bin/jsos-launcher
+usr/local/bin/jsos-launcher.mjs
+usr/local/bin/server.mjs
+
+# Session entry desktop file (generated)
+usr/share/wayland-sessions/jsos.desktop
+
+########## Temporary session data ##########
+*.pid
+*.lock
+*.log
+*.tmp
+*.bak
+
+########## Logs created by JSOS ##########
+log.txt
+launcher.log
+jsos-launcher.log
+
+########## Sway / Wayland runtime ##########
+# Runtime artifacts that should NEVER be committed
+run/
+run-user/
+*.socket
+*.service
+wlogout/
+
+########## MiniBrowser runtime ##########
+WebKitWebProcess*
+WebKitNetworkProcess*
+WebKitGPUProcess*
+
+########## Installer leftovers ##########
+installer/*.log
+installer/*.tmp
+
+###############################################
+### End of J’SOS .gitignore
+###############################################

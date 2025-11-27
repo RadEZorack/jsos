@@ -13,3 +13,7 @@ document.getElementById("app-terminal").addEventListener("click", () => {
 document.getElementById("app-settings").addEventListener("click", () => {
     launchNativeApp("settings");
 });
+
+document.getElementById("app-sublime").addEventListener("click", () => {
+    launchNativeApp("sublime");
+});

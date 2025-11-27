@@ -1,31 +1,48 @@
 #!/usr/bin/env bash
 set -e
 
-echo "🚀 Installing J'SOS..."
+echo "🚀 Installing J'SOS (Rust Edition)..."
 
+ROOT="$(dirname "$0")/.."
+
+# ---------------------------------------------------------
 # Install directories
+# ---------------------------------------------------------
 sudo mkdir -p /usr/local/share/jsos-shell
 sudo mkdir -p /usr/local/share/jsos-wm
 
-# Copy shell
-sudo cp -r "$(dirname "$0")"/../jsos-shell/* /usr/local/share/jsos-shell/
+# ---------------------------------------------------------
+# Copy J’SOS web shell (HTML/CSS/JS)
+# ---------------------------------------------------------
+sudo cp -r "$ROOT/jsos-shell/"* /usr/local/share/jsos-shell/
 
-# Copy sway config
-sudo cp "$(dirname "$0")"/../jsos-wm/sway-config /usr/local/share/jsos-wm/sway-config
-
-# Copy launcher script
-sudo cp "$(dirname "$0")"/../jsos-wm/jsos-session /usr/local/bin/jsos-session
+# ---------------------------------------------------------
+# Copy sway config + session script
+# ---------------------------------------------------------
+sudo cp "$ROOT/jsos-wm/sway-config" /usr/local/share/jsos-wm/sway-config
+sudo cp "$ROOT/jsos-wm/jsos-session" /usr/local/bin/jsos-session
 sudo chmod +x /usr/local/bin/jsos-session
 
-# Copy launcher script
-sudo cp "$(dirname "$0")"/../jsos-wm/jsos-launcher.mjs /usr/local/bin/jsos-launcher.mjs
-sudo chmod +x /usr/local/bin/jsos-launcher.mjs
+# ---------------------------------------------------------
+# Install Rust-native app launcher
+# The Rust binary must be located in:
+#   jsos-launcher/target/release/jsos-launcher
+# ---------------------------------------------------------
+if [ -f "$ROOT/jsos-launcher/target/release/jsos-launcher" ]; then
+    sudo cp "$ROOT/jsos-launcher/target/release/jsos-launcher" /usr/local/bin/jsos-launcher
+    sudo chmod +x /usr/local/bin/jsos-launcher
+    echo "✅ Installed native Rust launcher."
+else
+    echo "❌ Rust launcher not found!"
+    echo "Please build it first:"
+    echo "  cd jsos-launcher && cargo build --release"
+    exit 1
+fi
 
-sudo cp "$(dirname "$0")"/../jsos-wm/server.mjs /usr/local/bin/server.mjs
-sudo chmod +x /usr/local/bin/server.mjs
+# ---------------------------------------------------------
+# Install Wayland session entry
+# ---------------------------------------------------------
+sudo cp "$ROOT/jsos-wm/jsos.desktop" /usr/share/wayland-sessions/jsos.desktop
 
-# Copy session entry
-sudo cp "$(dirname "$0")"/../jsos-wm/jsos.desktop /usr/share/wayland-sessions/jsos.desktop
-
-echo "J'SOS installed!"
-echo "Select J'SOS from the login screen to begin."
+echo "🎉 J'SOS installed!"
+echo "➡️  Select 'J’SOS' from the login screen to begin."
