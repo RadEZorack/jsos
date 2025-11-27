@@ -2,21 +2,21 @@
 
 import { useState } from "react";
 import Wallpaper from "./(components)/Wallpaper";
-import Taskbar from "./(components)/Taskbar";
-import Window from "./(components)/Window";
+import Taskbar98 from "./(components)/Taskbar98";
+import Window98 from "./(components)/Window98";
 import DesktopIcon from "./(components)/DesktopIcon";
 import AixelPanel from "./(components)/AixelPanel";
 
 export default function Home() {
-  const [openWindow, setOpenWindow] = useState<null | string>(null);
+  const [openWindow, setOpenWindow] = useState<string | null>(null);
 
   return (
-    <div>
+    <>
       <Wallpaper />
-      <Taskbar />
+      <Taskbar98 />
       <AixelPanel />
 
-      {/* Desktop Icons */}
+      {/* Desktop icons */}
       <div className="absolute top-4 left-4 space-y-6">
         <DesktopIcon
           title="Browser"
@@ -28,20 +28,24 @@ export default function Home() {
           icon="settings.png"
           onOpen={() => setOpenWindow("settings")}
         />
+        <DesktopIcon
+          title="Terminal"
+          icon="terminal.png"
+          onOpen={() => setOpenWindow("terminal")}
+        />
       </div>
 
-      {/* Window examples */}
       {openWindow === "browser" && (
-        <Window title="Browser">
-          <p>MiniBrowser is managed by JSOS, not here — but you can preview UI concepts here.</p>
-        </Window>
+        <Window98 title="Browser">
+          <p>MiniBrowser is handled outside the dashboard.</p>
+        </Window98>
       )}
 
       {openWindow === "settings" && (
-        <Window title="Settings">
-          <p>Future system settings go here.</p>
-        </Window>
+        <Window98 title="Settings">
+          <p>Future J’SOS settings go here.</p>
+        </Window98>
       )}
-    </div>
+    </>
   );
 }

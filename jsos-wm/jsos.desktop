@@ -1,6 +1,7 @@
 [Desktop Entry]
-Name=J'SOS Desktop
-Comment=JavaScript Operating Shell
+Name=J'SOS
+Comment=Sky98 Desktop Environment
 Exec=/usr/local/bin/jsos-session
 TryExec=/usr/local/bin/jsos-session
 Type=Application
+DesktopNames=jsos
