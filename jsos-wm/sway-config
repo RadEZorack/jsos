@@ -6,16 +6,16 @@ exec_always sleep infinity &
 ### -----------------------
 ### Performance env vars
 ### -----------------------
-setenv WEBKIT_DISABLE_SANDBOX 1
-setenv WEBKIT_FORCE_COMPOSITING_MODE 1
-setenv WEBKIT_DISABLE_DMABUF_RENDERER 0
-setenv LIBGL_ALWAYS_SOFTWARE 0
-setenv MESA_GL_VERSION_OVERRIDE 4.1
-setenv MESA_GLSL_VERSION_OVERRIDE 410
+# setenv WEBKIT_DISABLE_SANDBOX 1
+# setenv WEBKIT_FORCE_COMPOSITING_MODE 1
+# setenv WEBKIT_DISABLE_DMABUF_RENDERER 0
+# setenv LIBGL_ALWAYS_SOFTWARE 0
+# setenv MESA_GL_VERSION_OVERRIDE 4.1
+# setenv MESA_GLSL_VERSION_OVERRIDE 410
 
 # (Optional, usually improves GL stability)
-setenv WLR_RENDERER gl
-setenv WLR_NO_HARDWARE_CURSORS 1
+# setenv WLR_RENDERER gl
+# setenv WLR_NO_HARDWARE_CURSORS 1
 
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
