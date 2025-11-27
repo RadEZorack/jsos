@@ -1,12 +1,26 @@
 set $mod Mod4
-# Keep sway alive even if shell fails
+
+# Always keep sway running even if shell crashes
 exec_always sleep infinity &
+
+### -----------------------
+### Performance env vars
+### -----------------------
+setenv WEBKIT_DISABLE_SANDBOX 1
+setenv WEBKIT_FORCE_COMPOSITING_MODE 1
+setenv WEBKIT_DISABLE_DMABUF_RENDERER 0
+setenv LIBGL_ALWAYS_SOFTWARE 0
+setenv MESA_GL_VERSION_OVERRIDE 4.1
+setenv MESA_GLSL_VERSION_OVERRIDE 410
+
+# (Optional, usually improves GL stability)
+setenv WLR_RENDERER gl
+setenv WLR_NO_HARDWARE_CURSORS 1
+
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
 # Start MiniBrowser as the JSOS shell
-exec_always WEBKIT_DISABLE_SANDBOX=1 \
-    WEBKIT_INSPECTOR_SERVER=127.0.0.1:9223 \
-    MESA_GL_VERSION_OVERRIDE=3.0 \
+exec_always \
     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
     /usr/local/share/jsos-shell/index.html
     
