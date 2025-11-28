@@ -88,29 +88,29 @@ EOF
 # ---------------------------------------------------------------------
 # 7. Install Sky98 login theme (for GDM)
 # ---------------------------------------------------------------------
-echo "🎨 Installing Sky98 login theme..."
+# echo "🎨 Installing Sky98 login theme..."
 
-THEME_DIR="/usr/share/gnome-shell/theme/Yaru"
-THEME_FILE="$THEME_DIR/gnome-shell.css"
+# THEME_DIR="/usr/share/gnome-shell/theme/Yaru"
+# THEME_FILE="$THEME_DIR/gnome-shell.css"
 
-if [ ! -f "$THEME_FILE" ]; then
-    echo "❌ Could not find $THEME_FILE"
-    exit 1
-fi
+# if [ ! -f "$THEME_FILE" ]; then
+#     echo "❌ Could not find $THEME_FILE"
+#     exit 1
+# fi
 
-# Backup original once
-if [ ! -f "${THEME_FILE}.backup" ]; then
-    echo "📦 Backing up Yaru theme..."
-    sudo cp "$THEME_FILE" "${THEME_FILE}.backup"
-fi
+# # Backup original once
+# if [ ! -f "${THEME_FILE}.backup" ]; then
+#     echo "📦 Backing up Yaru theme..."
+#     sudo cp "$THEME_FILE" "${THEME_FILE}.backup"
+# fi
 
-# Apply Sky98 greeter theme
-sudo cp "$ROOT/assets/greeter.css" "$THEME_FILE"
+# # Apply Sky98 greeter theme
+# sudo cp "$ROOT/assets/greeter.css" "$THEME_FILE"
 
-# Wallpaper override
-sudo cp "$ROOT/assets/wallpaper.png" /usr/share/backgrounds/jsos_wallpaper.png
+# # Wallpaper override
+# sudo cp "$ROOT/assets/wallpaper.png" /usr/share/backgrounds/jsos_wallpaper.png
 
-sudo sed -i 's|#lockDialogGroup {.*|#lockDialogGroup { background: url("/usr/share/backgrounds/jsos_wallpaper.png") !important; background-size: cover !important; }|g' "$THEME_FILE"
+# sudo sed -i 's|#lockDialogGroup {.*|#lockDialogGroup { background: url("/usr/share/backgrounds/jsos_wallpaper.png") !important; background-size: cover !important; }|g' "$THEME_FILE"
 
 # ---------------------------------------------------------------------
 # 8. Install Plymouth (Sky98 boot splash)
