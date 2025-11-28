@@ -21,7 +21,7 @@ export default function Home() {
         <DesktopIcon
           title="Browser"
           icon="browser.png"
-          onOpen={() => setOpenWindow("browser")}
+          onOpen={() => setOpenWindow("chromium-browser")}
         />
         <DesktopIcon
           title="Settings"

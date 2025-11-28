@@ -16,6 +16,9 @@ exec_always sleep infinity &
 # (Optional, usually improves GL stability)
 # setenv WLR_RENDERER gl
 # setenv WLR_NO_HARDWARE_CURSORS 1
+# set $HOME /home/parallels
+# set $WAYLAND_DISPLAY wayland-0
+# set $DISPLAY :0
 
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
@@ -23,12 +26,18 @@ exec_always /usr/local/bin/jsos-launcher &
 exec_always bash -c "cd '/Desktop/Parallels Shared Folders/Desktop/jsos/jsos-dashboard' && npm run dev"
 
 # Start MiniBrowser as the JSOS shell
-exec_always \
-    /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
-    http://localhost:3000
+# exec_always \
+#     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
+#     http://localhost:3000
+# exec_always bash -c "sleep 2 && chromium-browser --app=http://localhost:3000"
+exec_always bash -c "chromium-browser --allow-insecure-localhost --disable-web-security --user-data-dir=/tmp/chrome-dev http://localhost:3000"
+
     
 # Terminal
 bindsym $mod+Return exec foot
 
 # Exit sway
 bindsym $mod+Shift+e exec "swaymsg exit"
+
+# SkyAdmin (Return to login screen)
+bindsym Ctrl+$mod+F12 exec "loginctl terminate-user parallels"

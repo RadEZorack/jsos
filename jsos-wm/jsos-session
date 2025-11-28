@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 # ---- Performance / WebKit / GPU tuning ----
-export WEBKIT_FORCE_COMPOSITING_MODE=1
-export WEBKIT_DISABLE_DMABUF_RENDERER=0
-export LIBGL_ALWAYS_SOFTWARE=0
-export MESA_GL_VERSION_OVERRIDE=4.1
-export MESA_GLSL_VERSION_OVERRIDE=410
-export WLR_RENDERER=gl
-export WLR_NO_HARDWARE_CURSORS=1
+# export WEBKIT_FORCE_COMPOSITING_MODE=1
+# export WEBKIT_DISABLE_DMABUF_RENDERER=0
+# export LIBGL_ALWAYS_SOFTWARE=0
+# export MESA_GL_VERSION_OVERRIDE=4.1
+# export MESA_GLSL_VERSION_OVERRIDE=410
+# export WLR_RENDERER=gl
+# export WLR_NO_HARDWARE_CURSORS=1
 # export WEBKIT_DISABLE_SANDBOX=1  # optional
+# export CHOKIDAR_USEPOLLING=true
+# export NEXT_WEBPACK_USEPOLLING=1
+
+
 
 exec sway -c /usr/local/share/jsos-wm/sway-config
