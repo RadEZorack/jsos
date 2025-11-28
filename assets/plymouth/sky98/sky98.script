@@ -1,0 +1,54 @@
+// =========================================================
+// SKY98 PLYMOUTH BOOT SCRIPT
+// Soft cloud theme with bubble loading animation
+// =========================================================
+
+logo_image = Image("sky98.png");
+logo_width = logo_image.Width;
+logo_height = logo_image.Height;
+
+// Center position
+center_x = Window.GetWidth()  / 2 - logo_width  / 2;
+center_y = Window.GetHeight() / 2 - logo_height / 2;
+
+// Bubbles animation parameters
+bubble_count = 4;
+bubble_spacing = 35;
+bubble_size = 16;
+bubble_y = center_y + logo_height + 40;
+
+// Each bubble gets a phase offset
+time = 0;
+
+// Draw function
+fun draw_callback() {
+    Window.Clear(0, 0, 0, 1);
+
+    // Draw logo
+    logo_image.Draw(center_x, center_y, 1);
+
+    // Animated loading bubbles (8-bit pastel blue)
+    for (i = 0; i < bubble_count; i++) {
+        offset = (time * 180 + i * 90) % 360;
+        scale = 0.5 + 0.5 * sin(offset * 3.14159 / 180);
+
+        // Pale sky blue
+        color_r = 0.70;
+        color_g = 0.88;
+        color_b = 1.00;
+
+        x = Window.GetWidth()/2 - ((bubble_count-1)*bubble_spacing)/2 + i*bubble_spacing;
+        y = bubble_y;
+
+        radius = bubble_size * scale;
+
+        Window.DrawCircle(color_r, color_g, color_b, 1, x, y, radius);
+    }
+
+    time += 0.03;
+    return 1;
+}
+
+// Render loop
+Plymouth.SetRefreshRate(60);
+Plymouth.SetDrawFunction("draw_callback");

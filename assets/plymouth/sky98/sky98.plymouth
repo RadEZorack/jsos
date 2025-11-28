@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Sky98 Boot
+Description=Sky98 pastel boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/sky98
+ScriptFile=/usr/share/plymouth/themes/sky98/sky98.script

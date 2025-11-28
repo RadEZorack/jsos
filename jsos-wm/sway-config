@@ -19,10 +19,13 @@ exec_always sleep infinity &
 
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
+
+exec_always bash -c "cd '/Desktop/Parallels Shared Folders/Desktop/jsos/jsos-dashboard' && npm run dev"
+
 # Start MiniBrowser as the JSOS shell
 exec_always \
     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
-    /usr/local/share/jsos-shell/index.html
+    http://localhost:3000
     
 # Terminal
 bindsym $mod+Return exec foot

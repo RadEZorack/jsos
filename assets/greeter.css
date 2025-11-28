@@ -1,0 +1,104 @@
+/* ============================================================
+   SKY98 GREETER THEME
+   Applies to GDM (Ubuntu login screen)
+   ------------------------------------------------------------
+   A soft retro-inspired login theme with pastel blues,
+   pixel borders, minimal chrome, and a clean centered layout.
+   ============================================================ */
+
+/* --- Root background override happens via installer sed ---
+   We assume the installer injects:
+   #lockDialogGroup { background: url(...) }
+   So we keep everything transparent here.
+-------------------------------------------------------------- */
+
+#lockDialogGroup {
+    background-color: transparent !important;
+}
+
+/* -----------------------------------------------------------
+   Center login dialog container
+-------------------------------------------------------------- */
+#loginDialog {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 2px solid #b0d4ff !important;
+    border-radius: 12px !important;
+    padding: 35px 40px !important;
+    width: 380px !important;
+    box-shadow:
+        0 0 0 3px #ffffffaa,
+        0 4px 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* -----------------------------------------------------------
+   Login dialog positioning
+-------------------------------------------------------------- */
+#loginDialog {
+    margin-top: 0 !important;
+}
+#loginDialog > .modal-dialog {
+    margin-top: 0 !important;
+}
+
+/* -----------------------------------------------------------
+   Username label
+-------------------------------------------------------------- */
+#loginDialog .prompt-label {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a;
+    text-shadow: none !important;
+}
+
+/* -----------------------------------------------------------
+   Password entry box
+-------------------------------------------------------------- */
+#loginDialog .prompt-entry {
+    border: 2px solid #93caff !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    font-size: 17px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #222 !important;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* Highlight on focus */
+#loginDialog .prompt-entry:focus {
+    border-color: #5ab0ff !important;
+    box-shadow: 0 0 0 2px rgba(90,176,255,0.4) !important;
+}
+
+/* -----------------------------------------------------------
+   Login button
+-------------------------------------------------------------- */
+#loginDialog .confirm-button {
+    background-color: #7fc2ff !important;
+    color: #003459 !important;
+    border: 2px solid #4ea6ff !important;
+    border-radius: 8px !important;
+    padding: 10px 0 !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    box-shadow: 0 3px 0 #3c90e6 !important;
+}
+
+#loginDialog .confirm-button:active {
+    box-shadow: none !important;
+    transform: translateY(2px);
+}
+
+/* -----------------------------------------------------------
+   User list (if multiple users)
+-------------------------------------------------------------- */
+.user-list {
+    background: rgba(255,255,255,0.5) !important;
+    border: 2px solid #b9d9ff !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+}
+
+/* User items */
+.user-list
