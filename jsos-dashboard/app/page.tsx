@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Wallpaper from "./(components)/Wallpaper";
 import Taskbar98 from "./(components)/Taskbar98";
 import Window98 from "./(components)/Window98";
@@ -9,6 +9,29 @@ import AixelPanel from "./(components)/AixelPanel";
 
 export default function Home() {
   const [openWindow, setOpenWindow] = useState<string | null>(null);
+
+  async function launchNativeApp(app: string) {
+    await fetch(`http://127.0.0.1:21112/run?app=${encodeURIComponent(app)}`, {
+      method: "GET"
+    });
+  }
+
+  const launchingRef = useRef(false);
+
+  useEffect(() => {
+    if (!openWindow || launchingRef.current) return;
+
+    launchingRef.current = true;
+
+    launchNativeApp(openWindow)
+      .catch(console.error)
+      .finally(() => {
+        launchingRef.current = false;
+        setOpenWindow(null);
+      });
+  }, [openWindow]);
+
+
 
   return (
     <>
@@ -21,17 +44,22 @@ export default function Home() {
         <DesktopIcon
           title="Browser"
           icon="browser.png"
-          onOpen={() => setOpenWindow("chromium-browser")}
+          onOpen={() => setOpenWindow("chromium")}
         />
         <DesktopIcon
           title="Settings"
           icon="settings.png"
-          onOpen={() => setOpenWindow("settings")}
+          onOpen={() => setOpenWindow("gnome-control-center")}
         />
         <DesktopIcon
           title="Terminal"
           icon="terminal.png"
-          onOpen={() => setOpenWindow("terminal")}
+          onOpen={() => setOpenWindow("foot")}
+        />
+        <DesktopIcon
+          title="Codium"
+          icon="terminal.png"
+          onOpen={() => setOpenWindow("/usr/bin/codium")}
         />
       </div>
 

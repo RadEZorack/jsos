@@ -31,7 +31,7 @@ exec_always bash -c "cd '/home/parallels/jsos/jsos-dashboard' && npm run dev"
 #     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
 #     http://localhost:3000
 # exec_always bash -c "sleep 2 && chromium-browser --app=http://localhost:3000"
-exec_always bash -c "chromium-browser --allow-insecure-localhost --user-data-dir=/tmp/chrome-dev --app=http://localhost:3000"
+exec_always bash -c "chromium --allow-insecure-localhost --user-data-dir=/tmp/chrome-dev --app=http://localhost:3000"
 
     
 # Terminal
