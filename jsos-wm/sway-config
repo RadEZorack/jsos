@@ -16,9 +16,10 @@ exec_always sleep infinity &
 # (Optional, usually improves GL stability)
 # setenv WLR_RENDERER gl
 # setenv WLR_NO_HARDWARE_CURSORS 1
-# set $HOME /home/parallels
-# set $WAYLAND_DISPLAY wayland-0
-# set $DISPLAY :0
+
+set $HOME /home/parallels
+set $WAYLAND_DISPLAY wayland-0
+set $DISPLAY :0
 
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
