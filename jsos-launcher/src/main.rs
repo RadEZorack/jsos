@@ -2,13 +2,6 @@ use tiny_http::{Server, Response, Header};
 use std::process::Command;
 use urlencoding;
 
-static APP_MAP: &[(&str, &str)] = &[
-    ("firefox", "/usr/bin/firefox"),
-    ("foot", "/usr/bin/foot"),
-    ("settings", "gnome-control-center"),
-    ("sublime", "/usr/bin/subl"),
-];
-
 fn cors_headers() -> Vec<Header> {
     vec![
         Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap(),
@@ -47,16 +40,14 @@ fn main() {
                 .unwrap_or_else(|_| encoded.into())
                 .to_string();
 
-            if let Some((_, cmd)) = APP_MAP.iter().find(|(name, _)| *name == decoded) {
-                Command::new(cmd)
-                    .spawn()
-                    .expect("Failed to launch app");
+            let result = Command::new(&decoded).spawn();
 
+            if result.is_ok() {
                 respond_ok(request, "OK");
-                continue;
+            } else {
+                respond_not_found(request, "Failed to launch app");
             }
-
-            respond_not_found(request, "Unknown app");
+            
             continue;
         }
 
