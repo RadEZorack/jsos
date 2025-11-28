@@ -153,7 +153,7 @@ fi
 # ---------------------------------------------------------------------
 echo "📦 Installing Sky98 Dashboard/UI..."
 sudo mkdir -p /usr/share/jsos/jsos-dashboard
-sudo cp -r "$ROOT/jsos-dashboard/out/"* /usr/share/jsos/jsos-dashboard/
+sudo cp -r "$ROOT/jsos-dashboard/"* /home/parallels/jsos/jsos-dashboard/
 
 # ---------------------------------------------------------------------
 # 11. Final message

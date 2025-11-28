@@ -24,14 +24,14 @@ set $DISPLAY :0
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &
 
-exec_always bash -c "cd '/Desktop/Parallels Shared Folders/Desktop/jsos/jsos-dashboard' && npm run dev"
+exec_always bash -c "cd '/home/parallels/jsos/jsos-dashboard' && npm run dev"
 
 # Start MiniBrowser as the JSOS shell
 # exec_always \
 #     /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/MiniBrowser \
 #     http://localhost:3000
 # exec_always bash -c "sleep 2 && chromium-browser --app=http://localhost:3000"
-exec_always bash -c "chromium-browser --allow-insecure-localhost --disable-web-security --user-data-dir=/tmp/chrome-dev http://localhost:3000"
+exec_always bash -c "chromium-browser --allow-insecure-localhost --user-data-dir=/tmp/chrome-dev --app=http://localhost:3000"
 
     
 # Terminal
