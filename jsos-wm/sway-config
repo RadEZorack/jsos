@@ -21,8 +21,8 @@ set $HOME /home/parallels
 set $WAYLAND_DISPLAY wayland-0
 set $DISPLAY :0
 
-seat * xcursor_theme Adwaita
-seat * xcursor_size 24
+# seat * xcursor_theme Adwaita
+# seat * xcursor_size 24
 
 # Start J’Core native Rust launcher
 exec_always /usr/local/bin/jsos-launcher &

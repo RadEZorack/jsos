@@ -15,5 +15,7 @@
 # export NO_AT_BRIDGE=1
 # export GTK_MODULES=""
 
+export XCURSOR_THEME=Adwaita
+export XCURSOR_SIZE=24
 
 exec sway -c /usr/local/share/jsos-wm/sway-config
